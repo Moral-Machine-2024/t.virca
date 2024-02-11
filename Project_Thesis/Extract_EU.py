@@ -1,8 +1,9 @@
-### Extract EU respondents data from SharedResponses ###
+# Extract EU respondents data from SharedResponses
 # Import libraries
 import pandas as pd
 
-## Check that all EU countries are present (Use SharedResponsesFullFirstSessions instead of SharedResponses for ease of computation)
+# Check that all EU countries are present (Use SharedResponsesFullFirstSessions instead of SharedResponses
+# for ease of computation)
 FFS = pd.read_csv('SharedResponsesFullFirstSessions.csv')
 
 # UserCountry3 unique values and sort
@@ -11,7 +12,7 @@ countries_ISO3 = sorted(FFS['UserCountry3'].astype(str).unique())
 # Print complete list of countries (ISO3) in alphabetical order
 print(countries_ISO3)
 
-## Extract EU countries data from SharedResponses and make new csv file
+# Extract EU countries data from SharedResponses and make new csv file
 # Set chunk size
 chunk_size = 100000
 
