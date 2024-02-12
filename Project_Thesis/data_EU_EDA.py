@@ -100,6 +100,7 @@ print(data_EU.info())
 
 # %%
 # Extract preference for each row based on 'AttributeLevel' and 'Saved'
+# Attempt to extract an outcome preference for each scenario (two rows which form scenario merged later)
 
 # Create new column 'Preference'
 data_EU['Preference'] = ''
@@ -107,7 +108,7 @@ data_EU['Preference'] = ''
 # Iterate over each row in the df
 for index, row in data_EU.iterrows():
     if row['Saved'] == 1:
-        # If row is saved, row attribute level is preferece
+        # If row is saved, row attribute level is preference
         data_EU.at[index, 'Preference'] = row['AttributeLevel']
     else:
         # If row is not saved, opposite attribute level is preference
