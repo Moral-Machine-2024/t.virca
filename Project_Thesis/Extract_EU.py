@@ -18,7 +18,9 @@ chunk_size = 100000
 
 # Initialize empty df
 SharedResponsesEU = pd.DataFrame()
-
+#
+# I understand that there is missing Data from Cyprus in this data set. Please do confirm if this is indeed the case.
+#
 eu_countries = ['AUT', 'BEL', 'BGR', 'HRV', 'CYP', 'CZE', 'DNK', 'EST', 'FIN', 'FRA',
                 'DEU', 'GRC', 'HUN', 'IRL', 'ITA', 'LVA', 'LTU', 'LUX', 'MLT', 'NLD',
                 'POL', 'PRT', 'ROU', 'SVK', 'SVN', 'ESP', 'SWE']
