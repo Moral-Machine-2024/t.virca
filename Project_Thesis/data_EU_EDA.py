@@ -100,7 +100,6 @@ print(data_EU.info())
 
 # %%
 # Extract preference for each row based on 'AttributeLevel' and 'Saved'
-# Attempt to extract an outcome preference for each scenario (two rows which form scenario merged later)
 
 # Create new column 'Preference'
 data_EU['Preference'] = ''
