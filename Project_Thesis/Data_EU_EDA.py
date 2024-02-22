@@ -12,11 +12,14 @@ print(data_EU.head())
 
 # Info
 print(data_EU.info())
-# rows 24.773.479 x 41 columns
+# rows 24.773.480 x 41 columns
 # dtypes - object, float, int
 
 # Summary statistics
 print(data_EU.describe())
+
+# Save initial length dataset
+initial_length = len(data_EU)
 
 #%%
 # Are there missing values?
@@ -34,14 +37,15 @@ print(duplicates.any())
 
 # %%
 # Delete unnecessary columns containing missing values
-drop_columns = ['UserID', 'Template', 'DescriptionShown', 'LeftHand']
+drop_columns = ['Template', 'DescriptionShown', 'LeftHand']
 data_EU = data_EU.drop(columns=drop_columns, axis=1)
 print(data_EU.isnull().sum())
 
 # %%
 # Drop 30 NaN rows ScenarioType + all characters encoding
-data_EU = data_EU.dropna(subset=['ScenarioType'])
+data_EU = data_EU.dropna(subset=['ScenarioType', 'UserID'])
 print(data_EU.isnull().sum())
+print(len(data_EU))
 
 # %%
 # Check DefaultChoice, NonDefaultChoice, DefaultChoiceIsOmission (2.644.414 NaN)
@@ -62,7 +66,26 @@ print('Unique values of DefaultChoiceIsOmission: ')
 print(omission_unique)
 # [nan  1.  0.]
 
-# --> how to deal with these missing values?
+# --> how to deal with these missing values? Will I need these variable?
+# DefaultChoiceIsOmission = 1 -> characters that hold the default choice will be killed if the AV does nothing
+# DefaultChoiceIsOmission = 0 -> characters that hold the non-default choice will be killed if the AV does nothing
+# Distinction between default and non-default is not relevant for my purposes -> delete columns
+
+# %%
+# Delete DefaultChoice, NonDefaultChoice, DefaultChoiceIsOmission
+drop_columns_2 = ['DefaultChoice', 'NonDefaultChoice', 'DefaultChoiceIsOmission']
+data_EU = data_EU.drop(columns=drop_columns_2, axis=1)
+print(data_EU.isnull().sum())
+
+# Save current length dataset
+length_2 = len(data_EU)
+
+#%%
+# Proportion of rows deleted
+change_in_length = initial_length - length_2
+proportion_deleted = (change_in_length / initial_length) * 100
+print("Proportion deleted: ", proportion_deleted)
+# 0.01633 -> 1.63% of the total dataset
 
 # %%
 # Examine other object dtype columns
@@ -95,77 +118,13 @@ print(country_nunique)
 categorical_col = ['AttributeLevel', 'ScenarioTypeStrict', 'ScenarioType', 'DefaultChoice', 'NonDefaultChoice', 'UserCountry3']
 data_EU[categorical_col] = data_EU[categorical_col].astype('category')
 print(data_EU.info())
-
 # --> 'ResponseID' and 'ExtendedSessionID' momentarily kept object (?)
 
 # %%
-# Extract preference for each row based on 'AttributeLevel' and 'Saved'
-
-# Create new column 'Preference'
-data_EU['Preference'] = ''
-
-# Iterate over each row in the df
-for index, row in data_EU.iterrows():
-    if row['Saved'] == 1:
-        # If row is saved, row attribute level is preference
-        data_EU.at[index, 'Preference'] = row['AttributeLevel']
-    else:
-        # If row is not saved, opposite attribute level is preference
-        if row['AttributeLevel'] == 'Female':
-            data_EU.at[index, 'Preference'] = 'Male'
-        elif row['AttributeLevel'] == 'Male':
-            data_EU.at[index, 'Preference'] = 'Female'
-        elif row['AttributeLevel'] == 'Old':
-            data_EU.at[index, 'Preference'] = 'Young'
-        elif row['AttributeLevel'] == 'Young':
-            data_EU.at[index, 'Preference'] = 'Old'
-        elif row['AttributeLevel'] == 'Fat':
-            data_EU.at[index, 'Preference'] = 'Fit'
-        elif row['AttributeLevel'] == 'Fit':
-            data_EU.at[index, 'Preference'] = 'Fat'
-        elif row['AttributeLevel'] == 'Low':
-            data_EU.at[index, 'Preference'] = 'High'
-        elif row['AttributeLevel'] == 'High':
-            data_EU.at[index, 'Preference'] = 'Low'
-        elif row['AttributeLevel'] == 'Pets':
-            data_EU.at[index, 'Preference'] = 'Hoomans'
-        elif row['AttributeLevel'] == 'Hoomans':
-            data_EU.at[index, 'Preference'] = 'Pets'
-        elif row['AttributeLevel'] == 'More':
-            data_EU.at[index, 'Preference'] = 'Less'
-        elif row['AttributeLevel'] == 'Less':
-            data_EU.at[index, 'Preference'] = 'More'
-        elif row['AttributeLevel'] == 'Rand':
-            data_EU.at[index, 'Preference'] = 'Rand'
-
-# Extract preferences: Response ID, ScenarioTypeStrict, AttributeLevel, Saved, Preference columns
-columns = ['ResponseID', 'ScenarioTypeStrict', 'AttributeLevel', 'Saved', 'Preference']
-preferences_df = data_EU[columns]
-
-print(preferences_df.head(20))
-print()
-print(preferences_df.info())
-print()
-print(preferences_df.isna().sum())
-
-# --> How to extract values when AttributeLevel = Rand (?)
+# Check how many individual respondents (based on user ID)
+respondents = data_EU['UserID'].nunique()
+print("Number of individual respondents: ", respondents)
+# 794.636
 
 # %%
-# Combine based on ResponseID
-# Drop columns where rows have different values
-preferences_df_2 = preferences_df.drop(['AttributeLevel', 'Saved'], axis=1)
 
-# Groupby
-preferences_df_2 = preferences_df_2.groupby('ResponseID', as_index=False).first()
-
-print(preferences_df_2.head(20))
-print()
-print(preferences_df_2.info())
-# Roughly half of the entries, as expected
-
-# %%
-# ... Univariate / Bivariate analysis
-# ... Correlations
-# ... Analyze categorical variables / plots
-# ... Outliers?
-# ... Identify target variable / visualize
