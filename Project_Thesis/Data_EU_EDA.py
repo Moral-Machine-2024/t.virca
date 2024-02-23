@@ -182,10 +182,10 @@ plt.show()
 # Count unique users per country
 user_counts = data_EU.groupby('UserCountry3')['UserID'].nunique().reset_index()
 
-# Order the dataframe by user counts in descending order
+# Sort
 user_counts = user_counts.sort_values(by='UserID', ascending=False)
 
-# Plotting the bar chart using Seaborn
+# Plot country representation per unique UserID
 plt.figure(figsize=(12, 6))
 sns.barplot(x='UserCountry3', y='UserID', data=user_counts, order=user_counts['UserCountry3'])
 plt.title('Distribution of Unique Users per Country')
