@@ -2,9 +2,11 @@
 ### EDA/pre-processing on EU respondents data ###
 # Import libraries
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+# %%
 # Read SharedResponses EU users
 data_EU = pd.read_csv('SharedResponsesEU.csv')
 
@@ -154,6 +156,10 @@ print(data_EU.info())
 # --> 'ResponseID' and 'ExtendedSessionID' momentarily kept object
 
 # %%
+# Export cleaned dataframe to csv (intermediate)
+data_EU.to_csv('EU_data2.csv')
+
+# %%
 # Check how many individual respondents (based on user ID)
 respondents = data_EU['UserID'].nunique()
 print("Number of individual respondents: ", respondents)
@@ -194,5 +200,25 @@ plt.ylabel('Number of Unique Users')
 plt.xticks(rotation=45, ha='right')
 plt.tight_layout()
 plt.show()
+
+# %%
+# Import cleaned EU_data2
+df = pd.read_csv('EU_data2.csv')
+
+# %%
+# Check - The same ResponseID pairs share the same ScenarioType and ScenarioTypeStrict
+# Print 5 random unique values of ResponseID
+array_RID = df['ResponseID'].unique()
+extract_5RID = np.random.choice(array_RID, size=5, replace=False)
+print(extract_5RID)
+
+# Check ScenarioType and ScenarioTypeStrict of 5 random ResponseID + duplicate
+rows_5RID = df[df['ResponseID'].isin(extract_5RID)]
+print(rows_5RID[['ResponseID', 'ScenarioType', 'ScenarioTypeStrict']])
+
+# --> Correct
+# --> ScenarioType can be deleted (ScenarioTypeStrict contains the same information)
+
+# %%
 
 
