@@ -217,7 +217,6 @@ print(df.info())
 # --> 'ResponseID' momentarily kept object
 
 # %%
-# %%
 # Function for pairwise comparison of rows + extract preferences into new df
 def pairwise_comparison(df):
     pairwise_data = []
