@@ -78,3 +78,4 @@ plt.show()
 # %%
 # View binary dataframe
 print(binary_df)
+
