@@ -142,7 +142,6 @@ def calculate_abstract_features(sample, binary_matrix):
     # Return the updated DataFrame
     return sample
 
-
 # %%
 #### Sub-sample: Africa ###
 # Load the data
