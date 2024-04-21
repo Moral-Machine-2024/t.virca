@@ -83,7 +83,6 @@ plt.show()
 # View binary dataframe
 print(binary_df)
 
-
 # %%
 ### Define calculate_abstract_features function ###
 
@@ -118,7 +117,7 @@ def calculate_abstract_features(sample, binary_matrix):
                 if binary_matrix.loc[feature, char] == 1:
                     # Add the character to the relevant characters list
                     relevant_characters.append(char)
-                    # Calculate the count of characters with the current feature
+            # Calculate the count of characters with the current feature
             count = sum(sample[char].values for char in relevant_characters)
             # sample[char].values: retrieve value of the column corresponding to the current char in the df
             # for char in relevant_characters: iterate over each char in the list relevant_characters
@@ -126,13 +125,13 @@ def calculate_abstract_features(sample, binary_matrix):
         # Store the count in the dictionary
         abstract_features_counts[feature] = count
 
-        # Create new columns for the abstract features in the original df
+    # Create new columns for the abstract features in the original df
     # Iterate over abstract feature counts
     for feature, count in abstract_features_counts.items():
         # Create a new column for each feature and assign its count
         sample[feature] = count
 
-        # Calculate additional abstract feature counts directly from original df
+    # Calculate additional abstract feature counts directly from original df
     # Calculate count of passengers
     sample['Passenger'] = sample['Barrier'] * sample['NumberOfCharacters']
     # Calculate count of characters crossing with a green light
