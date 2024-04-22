@@ -143,27 +143,27 @@ def calculate_abstract_features(sample, binary_matrix):
     return sample
 
 # %%
-#### Sub-sample: Africa ###
+#################################### Merged sub-sample ####################################
 # Load the data
-africa = pd.read_csv('Africa_Clean.csv')
+df = pd.read_csv('Merged_Samples.csv')
 
 # Perform one-hot encoding
-africa_encoded = pd.get_dummies(africa['CrossingSignal'], prefix='CrossingSignal')
+df_encoded = pd.get_dummies(df['CrossingSignal'], prefix='CrossingSignal')
 
 # Concatenate the one-hot encoded dataframe with the original dataframe
-africa = pd.concat([africa, africa_encoded], axis=1)
+df = pd.concat([df, df_encoded], axis=1)
 
 # Drop the original 'CrossingSignal' column
-africa.drop(columns=['CrossingSignal'], inplace=True)
+df.drop(columns=['CrossingSignal'], inplace=True)
 
 # %%
-# Apply function to Africa sample
-new_africa = calculate_abstract_features(africa, binary_df)
+# Apply function to the merged sub-sample
+final_df = calculate_abstract_features(df, binary_df)
 
 # %%
 # Check columns
-print(new_africa.info())
+print(final_df.info())
 
 # %%
-# Export new_africa
-new_africa.to_csv('New_Africa.csv')
+# Export final_df
+final_df.to_csv('FINAL_DF.csv')
