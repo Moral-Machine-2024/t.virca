@@ -19,15 +19,21 @@ The datasets used in this project can be retrieved at https://goo.gl/JXRrBP
 - 6 samples are extracted and saved to csv: 'Africa_sample', 'Asia_sample', 'Europe_sample', 'NorthAmerica_sample', 'SouthAmerica_sample', Oceania_sample'.
 
 ### 3_Data_Cleaning_New
+...
 
 ### 4_Create_Final_Dataframe
+...
 
 ### 5_Latent_Feature_Space
+...
 
 ### 6_Feature_Engineering
+...
 
 ### 7_Sanity_Check
+...
 
 ### 8_Visualize_Distributions
+...
 
 
