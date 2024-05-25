@@ -39,12 +39,26 @@ Proportions and counts in the entire continent sample:
 
 ### Column: 'Saved'
 
+<style>
+    .small-table {
+        font-size: 0.2em;
+    }
+</style>
+
+### Column: 'Saved'
+
+<div class="small-table">
+
 | Count   | Proportion |
 |---------|------------|
 | 1       | 0.5        |
 | 0       | 0.5        |
 
+</div>
+
 ### Column: 'UserCountry3'
+
+<div class="small-table">
 
 | Country | Count   | Proportion |
 |---------|---------|------------|
@@ -57,13 +71,19 @@ Proportions and counts in the entire continent sample:
 | KEN     | 8428    | 0.027022   |
 | MUS     | 8302    | 0.026618   |
 
+</div>
+
 ### Column: 'Cultures'
+
+<div class="small-table">
 
 | Culture  | Count   | Proportion |
 |----------|---------|------------|
 | Islamic  | 287844  | 0.922896   |
 | Catholic | 15746   | 0.050485   |
 | SouthAsia| 8302    | 0.026618   |
+
+</div>
 
 - The two functions are applied to each continent sample to halve their sizes and compare the proportions. 
 - Finally, the halved sub-samples are merged into a new dataframe and exported to csv. The number of rows in the merged dataframe is 33.309.960, which means that 16.654.980 scenarios are inlcuded. 
