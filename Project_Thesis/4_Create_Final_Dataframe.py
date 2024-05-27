@@ -19,7 +19,7 @@ oceania = pd.read_csv('Oceania_Clean.csv')
 
 # %%
 # Define create_sub_sample function
-def create_sub_sample(dataframe):
+def create_sub_sample(dataframe, proportion):
     """
     Create a sub-sample (50% of the original sample) from the given DataFrame using stratified sampling.
 
@@ -55,7 +55,7 @@ def create_sub_sample(dataframe):
         # append the country of the current group to the list country_labels
 
     # Create an instance of StratifiedShuffleSplit
-    stratified_sampler = StratifiedShuffleSplit(n_splits=1, test_size=0.5, random_state=42)
+    stratified_sampler = StratifiedShuffleSplit(n_splits=1, test_size=proportion, random_state=42)
 
     # Perform stratified sampling to extract a sub-sample
     sub_sample_indices = []
@@ -75,6 +75,9 @@ def create_sub_sample(dataframe):
     sub_sample = dataframe.loc[sub_sample_indices]
 
     return sub_sample
+
+
+proportion = 0.5
 
 # %%
 # Define verify_proportions function
@@ -105,13 +108,14 @@ def verify_proportions(df, columns):
         print(combined)
         print()
 
+
 # Columns to verify
 columns_to_verify = ['Saved', 'UserCountry3', 'Cultures']
 
 # %%
 ######################## Africa ########################
 # Apply create_sub_sample function
-africa_sub = create_sub_sample(africa)
+africa_sub = create_sub_sample(africa, proportion)
 # From 311.892 entries to 155.946 entries
 
 # Display the sub-sample
@@ -179,7 +183,7 @@ SouthAsia    4152    0.026625
 # %%
 ######################## Asia ########################
 # Apply create_sub_sample function
-asia_sub = create_sub_sample(asia)
+asia_sub = create_sub_sample(asia, proportion)
 # From 6.447.088 entries to 3.223.544 entries
 
 # Display the sub-sample
@@ -303,7 +307,7 @@ Orthodox        28628    0.008881
 # %%
 ######################## Europe ########################
 # Apply create_sub_sample function
-europe_sub = create_sub_sample(europe)
+europe_sub = create_sub_sample(europe, proportion)
 # From 31.794.814 entries to 15.897.408 entries
 
 # Display the sub-sample
@@ -437,7 +441,7 @@ Baltic       265984    0.016731
 # %%
 ######################## North America ########################
 # Apply create_sub_sample function
-north_america_sub = create_sub_sample(north_america)
+north_america_sub = create_sub_sample(north_america, proportion)
 # From 20.730.470 entries to 10.365.236 entries
 
 # Display the sub-sample
@@ -511,7 +515,7 @@ LatinAmerica   409866    0.039542
 # %%
 ######################## South America ########################
 # Apply create_sub_sample function
-south_america_sub = create_sub_sample(south_america)
+south_america_sub = create_sub_sample(south_america, proportion)
 # From 5.144.964 entries to 2.572.482 entries
 
 # Display the sub-sample
@@ -579,7 +583,7 @@ LatinAmerica  2572482         1.0
 # %%
 ######################## Oceania ########################
 # Apply create_sub_sample function
-oceania_sub = create_sub_sample(oceania)
+oceania_sub = create_sub_sample(oceania, proportion)
 # From 2.190.686 entries to 1.095.344 entries
 
 # Display the sub-sample
