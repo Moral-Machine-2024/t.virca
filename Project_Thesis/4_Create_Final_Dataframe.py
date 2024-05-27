@@ -25,6 +25,7 @@ def create_sub_sample(dataframe, proportion):
 
     Arguments:
     dataframe: The input DataFrame (a sample for each of the 6 continents)
+    proportion: define the test size in StratifiedShuffleSplit, the proportion of rows to be kept
 
     Returns:
     pd.DataFrame: A sub-sample of the input DataFrame, maintaining the class distribution based on 'UserCountry3'

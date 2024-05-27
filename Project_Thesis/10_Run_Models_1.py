@@ -12,7 +12,6 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score
 
 # %%
-# %%
 # For computational efficiency when loading the data:
 # Define a dictionary specifying the data types for each column
 dtypes = {
