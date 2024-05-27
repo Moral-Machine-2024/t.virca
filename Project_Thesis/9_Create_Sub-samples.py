@@ -114,9 +114,9 @@ verify_proportions(df_L, columns_to_verify)
 
 # %%
 # Export reduced dfs
-df_S.to_csv('df_S_New', index=False)
-df_M.to_csv('df_M_New', index=False)
-df_M.to_csv('df_L_New', index=False)
+df_S.to_csv('df_S', index=False)
+df_M.to_csv('df_M', index=False)
+df_M.to_csv('df_L', index=False)
 
 # %%
 ##################### Samples: Netherlands, Japan, Singapore #####################
