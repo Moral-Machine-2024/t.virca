@@ -92,11 +92,26 @@ Proportions and counts in the entire continent sample:
 
 ### 9_Create_Sub-samples
 The functions **create_sub_sample** and **verify_proportions** are called in this file to create further sub-samples to be used for modeling. 
-- **create_sub_sample** is used three times with the proportion argument set to 0.0001, 0.001 and 0.01, thus creating three sub-samples with 3.332, 33.310 and 333.100 rows respectively.
+- **create_sub_sample** is used three times with the proportion argument set to 0.0001, 0.001 and 0.01, thus creating three sub-samples (df_S, df_M and df_L) with 3.332, 33.310 and 333.100 rows respectively.
 - Three further sub-samples are made by extracting responses from the Netherlands, Japan and Singapore.
 
 ### 10_Modeling_1
-...
+A simple instance of Random Forests, SVM and KNN is created and fit on three samples of increasing size (df_S, df_M and df_L), using an 80-20 training-test split. The accuracy values obtained are then plotted to visualize the effect of increasing dataset size on model accuracy for all three models. 
+
+### 11_Modeling_2
+- The function *plot_confusion_matrix* is defined, which produces a confusion matrix indicating both count and percentage in each cell.
+- The sub-sample df_S, containing 333.100 rows, is used to train a dummy classifier, a Random Forest Classifier, an SVM classifier, and a KNN classifier, with a 60-20-20 training-validation-test split.
+- The hyperparameters of the three latter models are tuned using RandomizedSearchCV from the Scikit-learn library, and the best models are saved.
+- The *plot_confusion_matrix* function is used to produce confusion matrices heatmaps for each model.
+- ROC and AUC are computed and plotted for each model.
+- The following metrics are computed for each model: Accuracy, Precision, Recall, F1-Score and Specificity. A dataframe containing the metrics for each model is created.
+- Finally, permutation feature importance is performed using the best SVM model, and the permutation importance score of each feature is visualized with a barplot.
+
+### 12_Modeling_3
+- The three country samples (the Netherlands, Japan, Singapore) previously created are split into a training (80%) and test (20%) set.
+- The SVM model is trained on the three samples using the best hyperparameters found previously.
+- The *plot_confusion_matrix* function is used to produce confusion matrices for each sample.
+- The following metrics are computed for each sample: Accuracy, Precision, Recall, F1-Score and Specificity. 
 
 ## References
 Awad, E., Dsouza, S., Kim, R., Henrich, J., Shariff, A., Bonnefon, J.-F., & Rahwan, I. (2018). The moral machine experiment. *Nature*, *563*(7729), 59–64.
