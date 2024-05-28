@@ -170,4 +170,4 @@ print(sgp_sample.head())
 
 # %%
 # Export to csv
-sgp_sample.to_csv('Singapore_sample.csv', index=False)
+sgp_sample.to_csv('Singapore_sample_sub.csv', index=False)
