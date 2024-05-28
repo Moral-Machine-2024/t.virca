@@ -1,5 +1,8 @@
-# Moral Machine Experiment - Studying the influence of moral principles on decisions
-Brief description...
+# The Moral Machine Experiment: Predicting Decisions Based on Moral Principles
+This repository contains code and instructions to replicate the thesis project *"The Moral Machine Experiment: Predicting Decisions Based on Moral Principles"* conducted for the partial fulfilment of the MSc Data Science & Society at Tilburg University. 
+
+The abstract of the thesis reads as follows:
+*This research employs the dataset of the Moral Machine Experiment (MME) provided by Awad et al. (2018) to investigate the influence of moral principles on decisions within the context of autonomous vehicle (AV) moral dilemmas. Unlike previous works, which primarily focus on culturally homogeneous groups, this study examines responses within a culturally diverse sample in order to explore universal ethical considerations. Building on the computational model for extracting abstract features devised by Kim et al. (2018), this research investigates the predictive performance of Random Forest (RF), Support Vector Machine (SVM), and K-Nearest Neighbors (KNN), alongside a dummy classifier, as their potential in relation to the MME remains understudied. The findings suggest that all three models are able to identify patterns in the relationship between moral principles and moral judgements, in particular considering factors such as species, legality and age. Moreover, predictive performance improves with increased sample size and in culturally homogeneous samples. This study contributes to the interdisciplinary field of cognitive modeling and to the academic and policy discussion surrounding mandatory ethics setting for AVs.*
 
 ## Dataset
 The datasets used in this project can be retrieved at https://goo.gl/JXRrBP
@@ -85,5 +88,10 @@ Proportions and counts in the entire continent sample:
 - A bar plot is used to visualize the distribution of the target variable. This confirms that the dataset does not suffer from class imbalance.
 - A bar plot is used to visualize the distribution of users across cultures. That is, how many unique users belong to each culture.
 - A bar plot per country is not created since it would contain 106 bars. However, the value counts suggest that the United States, Germany and Brazil are the most represented countries. 
+
+## References
+Awad, E., Dsouza, S., Kim, R., Henrich, J., Shariff, A., Bonnefon, J.-F., & Rahwan, I. (2018). The moral machine experiment. *Nature*, *563*(7729), 59–64.
+
+Kim, R., Kleiman-Weiner, M., Abeliuk, A., Awad, E., Dsouza, S., Tenen- baum, J., & Rahwan, I. (2018). A computational model of common- sense moral decision making. *Proceedings of the 2018 AAAI/ACM Conference on AI, Ethics, and Society*, 197–2013.
 
 
