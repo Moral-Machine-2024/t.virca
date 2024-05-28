@@ -1,5 +1,5 @@
 # %%
-# Import libraries
+# Import pandas
 import pandas as pd
 
 # Read cultures file
