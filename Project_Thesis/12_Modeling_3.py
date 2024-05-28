@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.svm import SVC
 from sklearn.metrics import confusion_matrix
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
-from Run_Models_2 import plot_confusion_matrix
+from Modeling_2 import plot_confusion_matrix
 
 # %%
 # For computational efficiency when loading the data:
