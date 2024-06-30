@@ -1,5 +1,5 @@
-# The Moral Machine Experiment: Predicting Moral Decision-making Based on Personal Values
-This repository contains code and instructions to replicate the thesis project *"The Moral Machine Experiment: Predicting Moral Decision-making Based on Personal Values"* conducted for the partial fulfilment of the MSc Data Science & Society at Tilburg University. 
+# The Moral Machine Experiment: Predicting Moral Decision-Making Based on Personal Values
+This repository contains code and instructions to replicate the thesis project *"The Moral Machine Experiment: Predicting Moral Decision-Making Based on Personal Values"* conducted for the partial fulfilment of the MSc Data Science & Society at Tilburg University. 
 
 The abstract of the thesis reads as follows:
 
